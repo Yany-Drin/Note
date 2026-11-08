@@ -1,9 +1,7 @@
 import math
-import tomllib
 import pandas as pd
 import hanzidentifier
 from opencc_purepy import OpenCC
-import jieba
 
 
 cc_t2tw = OpenCC('t2tw')
