@@ -36,11 +36,14 @@ def convert_text(text: str, mode: str) -> str:
 
 
 async def main(page: ft.Page) -> None:
-
+    page.fonts = {
+        "Noto Sans Mono CJK": "/fonts/NotoSansMonoCJKtc-Regular.otf"
+    }
     page.title = '字音標註'
     page.bgcolor = BG_COLOR
     page.padding = ft.Padding.symmetric(horizontal=16, vertical=12)
     page.theme = build_theme()
+    page.theme.font_family = "Noto Sans Mono CJK"
 
     available = discover_schemes()
     state = AppState(schemes=available[:1] if available else [])
