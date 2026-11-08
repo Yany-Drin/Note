@@ -1,0 +1,15 @@
+[project]
+name = "Note"
+version = "0.1.0"
+description = "Note"
+requires-python = ">=3.12"
+dependencies = [
+    "flet",
+    "pandas",
+    "hanzidentifier",
+    "opencc-purepy",
+    "jieba",
+]
+
+[tool.flet.app]
+include = ["data"]
