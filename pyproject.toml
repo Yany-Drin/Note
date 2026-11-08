@@ -15,4 +15,4 @@ dependencies = [
 source_packages = ["jieba"]
 
 [tool.flet.app]
-include = ["data"]
+include = ["data", "fonts"]
