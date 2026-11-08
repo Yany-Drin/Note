@@ -1,14 +1,16 @@
+import sys
 import flet as ft
-import flet.fastapi as flet_fastapi
-from flet_web.fastapi import FletStaticFiles
-from fastapi import FastAPI
 from typing import Any
 from opencc_purepy import OpenCC
 
-import os
-os.environ['FLET_WEBSOCKET_HANDLER_ENDPOINT'] = '/note/ws'
-app = FastAPI()
+# 判断运行环境：Emscripten = 浏览器/Pyodide，其他 = 本地 Python
+IS_EMSCRIPTEN = sys.platform == "emscripten"
 
+if not IS_EMSCRIPTEN:
+    import os
+    os.environ['FLET_WEBSOCKET_HANDLER_ENDPOINT'] = '/note/ws'
+    from fastapi import FastAPI
+    import flet.fastapi as flet_fastapi
 
 from theme import (
     BG_COLOR, CARD_BG, PRIMARY_ROSE, BORDER_PINK, TEXT_PRIMARY,
@@ -21,13 +23,11 @@ from models import (
 from widgets import build_char_unit, build_bottom_panel
 from dialogs import show_pinyin_picker, open_scheme_dialog, open_copy_dialog
 
-
 _cc_modes = {
     '正體': OpenCC('s2tw'),
     '繁體': OpenCC('s2hk'),
     '簡體': OpenCC('t2s'),
 }
-
 
 def convert_text(text: str, mode: str) -> str:
     cc = _cc_modes.get(mode)
@@ -35,6 +35,10 @@ def convert_text(text: str, mode: str) -> str:
 
 
 async def main(page: ft.Page) -> None:
+    if IS_EMSCRIPTEN:
+        import micropip
+        await micropip.install("jieba")
+
     page.title = '字音標註'
     page.bgcolor = BG_COLOR
     page.padding = ft.Padding.symmetric(horizontal=16, vertical=12)
@@ -194,9 +198,10 @@ async def main(page: ft.Page) -> None:
 
     rebuild_annotation()
 
-app.mount('/note', flet_fastapi.app(main))
+if not IS_EMSCRIPTEN:
+    app = FastAPI()
+    app.mount('/note', flet_fastapi.app(main))
 
-
-if __name__ == '__main__':
-    import uvicorn
-    uvicorn.run(app, host='localhost', port=8080)
+    if __name__ == '__main__':
+        import uvicorn
+        uvicorn.run(app, host='localhost', port=8080)
