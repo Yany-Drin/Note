@@ -21,11 +21,11 @@ jobs:
       - name: Build app
         shell: bash
         run: |
-          uv run flet publish --base-url ${GITHUB_REPOSITORY#*/} --route-url-strategy hash
+          uv run flet build wed --yes --base-url ${GITHUB_REPOSITORY#*/} --route-url-strategy hash
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v4.0.0
         with:
-          path: dist
+          path: build/web
           name: web-build-artifact
           retention-days: 20
   deploy:
