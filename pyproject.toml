@@ -1,14 +1,18 @@
 [project]
-name = "Note"
+name = "zihyin-biaozhu"
 version = "0.1.0"
-description = "Note"
-requires-python = ">=3.12"
+description = "字音標註 — Flet 中文讀音標註工具"
+requires-python = ">=3.12,<3.13"
 dependencies = [
     "flet",
     "pandas",
     "hanzidentifier",
     "opencc-purepy",
+    "jieba",
 ]
+
+[tool.flet]
+source_packages = ["jieba"]
 
 [tool.flet.app]
 include = ["data"]
