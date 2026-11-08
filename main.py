@@ -203,3 +203,5 @@ if not IS_EMSCRIPTEN:
     if __name__ == '__main__':
         import uvicorn
         uvicorn.run(app, host='localhost', port=8080)
+else:
+    ft.run(main)
