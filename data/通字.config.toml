@@ -1,0 +1,7 @@
+columns = ['通字漢字', '通字羅馬字']
+sep = [',', ' ']
+com = '()'
+
+[info]
+name = '通字'
+source = 'QQ'
