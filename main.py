@@ -2,6 +2,7 @@ import sys
 import flet as ft
 from typing import Any
 from opencc_purepy import OpenCC
+import jieba
 
 # 判断运行环境：Emscripten = 浏览器/Pyodide，其他 = 本地 Python
 IS_EMSCRIPTEN = sys.platform == "emscripten"
@@ -35,9 +36,6 @@ def convert_text(text: str, mode: str) -> str:
 
 
 async def main(page: ft.Page) -> None:
-    if IS_EMSCRIPTEN:
-        import micropip
-        await micropip.install("jieba")
 
     page.title = '字音標註'
     page.bgcolor = BG_COLOR
