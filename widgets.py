@@ -72,6 +72,8 @@ def build_char_unit(
 
     hanzi_text = ft.Text(
         char, size=28, color=TEXT_PRIMARY,
+        font_family="Noto Sans Mono CJK",
+        font_family_fallback=["Noto Sans Mono CJK"],
         weight=ft.FontWeight.W_500, text_align=ft.TextAlign.CENTER,
     )
 
