@@ -8,7 +8,6 @@ dependencies = [
     "pandas",
     "hanzidentifier",
     "opencc-purepy",
-    "jieba",
 ]
 
 [tool.flet.app]
