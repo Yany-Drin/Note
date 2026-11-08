@@ -55,6 +55,7 @@ def get_result_for_scheme(
         return {}
     func = data_loader.get_function(df, scheme)
     result: dict[str, Any] = {}
+    import jieba
     for word in jieba.cut(text, cut_all=False):
         if word.strip():
             result.update(func(df, word, scheme))
