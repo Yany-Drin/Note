@@ -10,6 +10,7 @@ env:
   UV_PYTHON: 3.12
   FLET_CLI_NO_RICH_OUTPUT: 1
   FLET_PYTHON_BUILD_MANIFEST: ${{ github.workspace }}/python-manifest.json
+  FLET_WEB_RENDERER: html
 jobs:
   build:
     name: Build web app
