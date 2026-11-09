@@ -39,7 +39,7 @@ async def main(page: ft.Page) -> None:
     page.fonts = {
         "Noto Sans Mono CJK": "/fonts/NotoSansMonoCJKtc-Regular.otf"
     }
-    page.title = '字音標註'
+    page.title = 'Note'
     page.bgcolor = BG_COLOR
     page.padding = ft.Padding.symmetric(horizontal=16, vertical=12)
     page.theme = build_theme()
@@ -207,4 +207,4 @@ if not IS_EMSCRIPTEN:
         import uvicorn
         uvicorn.run(app, host='localhost', port=8080)
 else:
-    ft.run(main)
+    ft.run(main, assets_dir="assets")
