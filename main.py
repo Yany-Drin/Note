@@ -37,7 +37,7 @@ def convert_text(text: str, mode: str) -> str:
 
 async def main(page: ft.Page) -> None:
     page.fonts = {
-        "Noto Sans Mono CJK": "/fonts/NotoSansMonoCJKtc-Regular.otf"
+        "Noto Sans Mono CJK": "fonts/NotoSansMonoCJKtc-Regular.otf"
     }
     page.title = 'Note'
     page.bgcolor = BG_COLOR
