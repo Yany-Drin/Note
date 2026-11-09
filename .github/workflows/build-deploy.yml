@@ -22,7 +22,12 @@ jobs:
       - name: Build app
         shell: bash
         run: |
-          uv run flet build web --yes --no-cdn --base-url ${GITHUB_REPOSITORY#*/} --route-url-strategy hash
+          uv run flet build web \
+          --yes \
+          --no-cdn \
+          --template "${{ github.workspace }}/flet-build-template.zip" \
+          --base-url ${GITHUB_REPOSITORY#*/} \
+          --route-url-strategy hash
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v4.0.0
         with:
