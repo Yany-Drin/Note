@@ -207,5 +207,4 @@ if not IS_EMSCRIPTEN:
         import uvicorn
         uvicorn.run(app, host='localhost', port=8080)
 else:
-    ft.context.page.web_renderer = None
     ft.run(main, assets_dir="assets", view=ft.AppView.WEB_BROWSER)
