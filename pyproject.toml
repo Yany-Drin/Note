@@ -1,8 +1,8 @@
 [project]
-name = "zihyin-biaozhu"
+name = "Note"
 version = "0.1.0"
-description = "字音標註 — Flet 中文讀音標註工具"
-requires-python = ">=3.12,<3.13"
+description = "字音標註"
+requires-python = ">=3.12"
 dependencies = [
     "flet",
     "pandas",
