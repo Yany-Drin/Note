@@ -24,6 +24,7 @@ jobs:
         run: |
           uv run flet build web \
           --yes \
+          --no-cdn \
           --pwa-short-name "字音標註" \
           --pwa-theme-color "#C2185B" \
           --pwa-background-color "#FFF5F6" \
