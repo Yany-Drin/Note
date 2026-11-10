@@ -24,8 +24,9 @@ jobs:
         run: |
           uv run flet build web \
           --yes \
-          --no-cdn \
-          --template "${{ github.workspace }}/flet-build-template.zip" \
+          --pwa-short-name "字音標註" \
+          --pwa-theme-color "#C2185B" \
+          --pwa-background-color "#FFF5F6" \
           --base-url ${GITHUB_REPOSITORY#*/} \
           --route-url-strategy hash
       - name: Upload Pages Artifact
